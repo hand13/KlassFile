@@ -37,6 +37,7 @@ public class KlassUtils {
                 case 0x19:
                     result.append("aload ");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x2a:
@@ -57,6 +58,7 @@ public class KlassUtils {
                     byte high = code[offset];
                     offset++;
                     byte low = code[offset];
+                    result.append(" ");
                     result.append(high << 8 | low);
                     break;
                 case (byte) 0xb0:
@@ -68,6 +70,7 @@ public class KlassUtils {
                 case 0x3a:
                     result.append("astore");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x4b:
@@ -94,6 +97,7 @@ public class KlassUtils {
                 case 0x10:
                     result.append("bipush");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x34:
@@ -108,6 +112,7 @@ public class KlassUtils {
                     high = code[offset];
                     offset++;
                     low = code[offset];
+                    result.append(" ");
                     result.append(high << 8 | low);
                     break;
                 case (byte) 0x90:
@@ -145,6 +150,7 @@ public class KlassUtils {
                 case 0x18:
                     result.append("dload");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x26:
@@ -174,6 +180,7 @@ public class KlassUtils {
                 case 0x39:
                     result.append("dstore");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x47:
@@ -248,6 +255,7 @@ public class KlassUtils {
                 case 0x17:
                     result.append("fload");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x22:
@@ -277,6 +285,7 @@ public class KlassUtils {
                 case 0x38:
                     result.append("fstore");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x43:
@@ -296,21 +305,25 @@ public class KlassUtils {
                     break;
                 case (byte) 0xb4:
                     result.append("getfield");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xb2:
                     result.append("getstatic");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xa7:
                     result.append("goto");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xc8:
                     result.append("goto_w");
+                    result.append(" ");
                     result.append(nextU4(code, offset));
                     offset += 4;
                     break;
@@ -370,94 +383,113 @@ public class KlassUtils {
                     break;
                 case (byte) 0xa5:
                     result.append("if_acmpeq");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xa6:
                     result.append("if_acmpne");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0x9f:
                     result.append("if_icmpeq");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xa0:
                     result.append("if_icmpne");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xa1:
                     result.append("if_icmplt");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xa2:
                     result.append("if_icmpge");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xa3:
                     result.append("if_icmpgt");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xa4:
                     result.append("if_icmple");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0x99:
                     result.append("ifeq");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0x9a:
                     result.append("ifne");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0x9b:
                     result.append("iflt");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0x9c:
                     result.append("ifge");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0x9d:
                     result.append("ifgt");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0x9e:
                     result.append("ifle");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xc7:
                     result.append("ifnonnull");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xc6:
                     result.append("ifnull");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0x84:
                     result.append("iinc");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x15:
                     result.append("iload");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x1a:
@@ -480,37 +512,47 @@ public class KlassUtils {
                     break;
                 case (byte) 0xc1:
                     result.append("instanceof");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xba:
                     result.append("invokedynamic");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
+                    result.append(" ");
                     result.append("0");
+                    result.append(" ");
                     result.append("0");
                     offset += 4;
                     break;
                 case (byte) 0xb9:
                     result.append("invokeinterface");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     offset += 1;
+                    result.append(" ");
                     result.append(code[offset]);
                     offset += 1;
+                    result.append(" ");
                     result.append("0");
                     break;
                 case (byte) 0xb7:
                     result.append("invokespecial");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xb8:
                     result.append("invokestatic");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xb6:
                     result.append("invokevirtual");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
@@ -557,10 +599,12 @@ public class KlassUtils {
                     break;
                 case (byte) 0xa8:
                     result.append("jsr");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                 case (byte) 0xc9:
                     result.append("jsr");
+                    result.append(" ");
                     result.append(nextU4(code, offset));
                     offset += 4;
                     break;
@@ -601,11 +645,13 @@ public class KlassUtils {
                     break;
                 case 0x13:
                     result.append("ldc_w");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case 0x14:
                     result.append("ldc2_w");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
@@ -615,6 +661,7 @@ public class KlassUtils {
                 case 0x16:
                     result.append("lload");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x1e:
@@ -655,6 +702,7 @@ public class KlassUtils {
                 case 0x37:
                     result.append("lstore");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x3f:
@@ -686,19 +734,23 @@ public class KlassUtils {
                     break;
                 case (byte) 0xc5:
                     result.append("multianewarray");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case (byte) 0xbb:
                     result.append("new");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xbc:
                     result.append("newarray");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case 0x0:
@@ -712,17 +764,20 @@ public class KlassUtils {
                     break;
                 case (byte) 0xb5:
                     result.append("putfield");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xb3:
                     result.append("putstatic");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                     break;
                 case (byte) 0xa9:
                     result.append("ret");
                     offset++;
+                    result.append(" ");
                     result.append(code[offset]);
                     break;
                 case (byte) 0xb1:
@@ -736,6 +791,7 @@ public class KlassUtils {
                     break;
                 case 0x11:
                     result.append("sipush");
+                    result.append(" ");
                     result.append(nextU2(code, offset));
                     offset += 2;
                 case 0x5f:
