@@ -197,14 +197,7 @@ public class KlassParser {
     }
 
     public static int b2i(byte b) {
-        int m = b;
-        if (m >= 0) {
-            return m;
-        } else {
-            m = m & 0x000000ff;
-            m = m | 0x00000080;
-            return m;
-        }
+        return 0xff & b;
     }
 
 
