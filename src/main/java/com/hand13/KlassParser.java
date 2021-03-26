@@ -14,6 +14,7 @@ import java.io.InputStream;
 public class KlassParser {
     private static final int CAFEBABE = 0xcafebabe;
     private InputStream is;
+    private int ioOffset = 0;
 
     public KlassParser(InputStream is) {
         this.is = is;
@@ -31,6 +32,10 @@ public class KlassParser {
             }
         } catch (IOException ignored) {
         }
+    }
+
+    public int getIoOffset() {
+        return ioOffset;
     }
 
     public KlassFile parse() throws IOException {
@@ -201,7 +206,8 @@ public class KlassParser {
     }
 
 
-    public static byte[] nextBytes(InputStream ins, int length) throws IOException {
+    public byte[] nextBytes(InputStream ins, int length) throws IOException {
+        ioOffset += length;
         byte[] buffer = new byte[length];
         int left = length;
         int reads;
